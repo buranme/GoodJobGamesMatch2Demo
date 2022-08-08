@@ -23,6 +23,7 @@ namespace Blocks
         public override List<Block> CalculateExplosion()
         {
             ToExplode.Clear();
+            ToExplode.Add(this);
             foreach (var block in Board.Blocks)
             {
                 if(block.Color() == _color && block.GetType() != GetType())
