@@ -1,0 +1,31 @@
+Basic Flow:
+    1. Game starts
+    2. Board creates the blocks
+    3. Board adjusts its position according to m and n
+    4. Board tells Helper to check the blocks
+    5. Helper loops over all blocks and tells them to calculate
+    6. Blocks calculate the blocks they would explode if they were to be clicked on
+    7. Blocks save this information and send it to Helper
+    8. Helper checks if there's any block that can explode any blocks and passes the information to the board
+    9. Board enables input
+    10. Player clicks on a block
+    11. Block checks if there's blocks it can destroy
+    12. Block passes the to-be-destroyed blocks to the board
+    13. Board disables input
+    14. Board pushes each block to the pool
+    15. Board pulls new blocks from the pool
+    16. Board sends the information of all the blocks that need to fall down to the animator
+    17. Animator adds the blocks to the list
+    18. Animator checks if there are blocks in the list
+    19. Animator iterates through all the blocks in the list on each update and moves them slightly towards their destinations
+    20. Animator checks if the block reached its destination
+    
+Alternative Flow:
+    8a. There are blocks that can be clicked on, continue from 9
+    8b. There are no blocks that can be clicked on, Board shuffles the blocks, jump to 4
+    11a. It has blocks it can destroy, continue from 12
+    11b. It does not have blocks it can destroy, do nothing and wait for another click
+    18a. There are blocks in the list, continue from 19
+    18b. There are no blocks in the list, jump to 4
+    20a. Block has reached the destination, remove it from the list and continue iteration
+    20b. Block has not reached the destination, continue iteration
